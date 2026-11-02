@@ -22,7 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
- .gitignore "*.zip"
- .gitignore ".vscode/"
- .gitignore ".agents/
- .gitignore "skills-lock.json"
+.agents/
+skills-lock.json
