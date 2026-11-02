@@ -627,16 +627,18 @@ function App() {
                   className="group overflow-hidden rounded-2xl border border-violet-100 bg-white transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-violet-200 hover:shadow-xl"
                   key={tela.imagem}
                 >
-                  <div className="relative flex h-[18rem] items-center justify-center bg-[radial-gradient(ellipse_at_center,#e9e2f7,#ddd4f0)] p-5 sm:h-[22rem]">
-                    <span className="absolute left-4 top-4 text-[0.58rem] font-extrabold tracking-[0.14em] text-violet-700">
+                  <div className="flex h-[18rem] flex-col bg-[radial-gradient(ellipse_at_center,#e9e2f7,#ddd4f0)] p-5 sm:h-[22rem]">
+                    <span className="text-[0.58rem] font-extrabold tracking-[0.1em] text-violet-700">
                       {tela.categoria}
                     </span>
-                    <img
-                      alt={tela.alt}
-                      className="max-h-full max-w-full object-contain drop-shadow-xl transition-transform duration-300 group-hover:scale-[1.025]"
-                      loading="lazy"
-                      src={tela.imagem}
-                    />
+                    <div className="flex min-h-0 flex-1 items-center justify-center pt-2">
+                      <img
+                        alt={tela.alt}
+                        className="max-h-full max-w-full object-contain drop-shadow-xl transition-transform duration-300 group-hover:scale-[1.025]"
+                        loading="lazy"
+                        src={tela.imagem}
+                      />
+                    </div>
                   </div>
                   <figcaption className="flex items-start justify-between gap-3 p-4 sm:p-5">
                     <div>
@@ -661,16 +663,16 @@ function App() {
           className="grid gap-10 bg-[#f0ecf8] px-5 py-20 sm:px-8 sm:py-24 md:grid-cols-2 md:items-center md:gap-12 lg:px-[8%] lg:py-[7.5rem]"
           data-reveal
         >
-          <div className="relative mx-auto grid h-[22rem] w-full max-w-sm place-items-center overflow-hidden rounded-t-[10rem] rounded-b-2xl bg-[#ddd4f0] sm:h-[27rem]">
+          <div className="mx-auto flex h-[22rem] w-full max-w-sm flex-col items-center overflow-hidden rounded-t-[10rem] rounded-b-2xl bg-[#ddd4f0] px-6 py-5 sm:h-[27rem]">
             <img
               alt="Aparelho JOVI utilizado como referência para a proposta MOBIX"
-              className="h-[88%] w-4/5 object-contain mix-blend-multiply"
+              className="min-h-0 w-full flex-1 object-contain mix-blend-multiply"
               height="1536"
               loading="lazy"
               src="/img/mobixcapa.png"
               width="1024"
             />
-            <span className="absolute bottom-5 text-center text-[0.55rem] tracking-[0.18em] text-violet-700">
+            <span className="shrink-0 pt-3 text-center text-[0.55rem] tracking-[0.18em] text-violet-700">
               TECNOLOGIA COMO PONTO DE PARTIDA
             </span>
           </div>
