@@ -34,7 +34,7 @@ dispositivo por movimento reduzido.
 
 ## Pré-requisitos
 
-- Node.js LTS (versão 22 ou superior recomendada)
+- Node.js `20.19+` ou `22.12+` (Node.js LTS recomendado; requisito do Vite 8)
 - npm
 - Git, para clonar o repositório
 
