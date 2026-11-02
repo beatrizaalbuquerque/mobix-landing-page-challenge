@@ -16,6 +16,14 @@ O repositório contém a landing page e telas conceituais. **Não contém o
 aplicativo FLOW nem implementações funcionais de OCR, geração de resumos ou
 questões, armazenamento de materiais ou integração com a câmera JOVI.**
 
+## Interface
+
+A landing page adapta o conteúdo para desktop, tablet e celular, com navegação
+entre seções, galeria de protótipos e formulário de contato. Algumas seções
+aparecem suavemente ao entrar na área visível, e os cards da galeria têm um
+realce discreto ao interagir. As transições respeitam a preferência do
+dispositivo por movimento reduzido.
+
 ## Tecnologias
 
 - React e JSX
@@ -90,14 +98,16 @@ O repositório não implementa um backend próprio, autenticação ou banco de d
 O formulário de contato envia as mensagens pelo serviço externo FormSubmit para
 `mobix.fiap@gmail.com`. No primeiro envio, o destinatário precisa confirmar a
 ativação no e-mail enviado pelo FormSubmit. O envio real depende dessa
-confirmação e da disponibilidade do serviço.
+confirmação e da disponibilidade do serviço. A seção de contato também oferece
+um link de e-mail direto para esse endereço.
 
 ## Publicação na Vercel
 
 Existe uma publicação do projeto em
 [https://mobix-landing-page-challenge.vercel.app/](https://mobix-landing-page-challenge.vercel.app/).
-O endereço abre a landing page, mas isso não confirma que a publicação tenha
-recebido as alterações locais desta entrega.
+O endereço corresponde à publicação do projeto. A versão disponível acompanha
+o último deploy concluído no painel da Vercel; confira o status do deploy para
+confirmar quando as alterações mais recentes estiverem publicadas.
 
 Para publicar esta aplicação, configure o projeto na Vercel com:
 
@@ -111,7 +121,8 @@ Para publicar esta aplicação, configure o projeto na Vercel com:
 O arquivo `flow-react/vercel.json` registra os comandos de instalação e build e
 a pasta de saída. O **Root Directory precisa ser definido nas configurações do
 projeto Vercel**; um arquivo dentro da pasta não substitui essa configuração.
-Nenhum novo deploy foi realizado como parte desta entrega.
+Um push para a branch conectada pode iniciar um deploy automático; a conclusão
+deve ser confirmada no painel da Vercel.
 
 ## Repositório
 

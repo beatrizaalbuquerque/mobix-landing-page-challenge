@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const etapas = [
   {
@@ -99,7 +99,7 @@ const navegacao = [
 ];
 
 const campoClasse =
-  "w-full rounded-xl border border-[#d9d0eb] bg-white px-4 py-3 text-sm leading-6 text-[#211936] placeholder:text-[#91899e] transition-colors focus:border-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-700/20";
+  "w-full rounded-xl border border-[#d9d0eb] bg-white px-4 py-3 text-sm leading-6 text-[#211936] placeholder:text-[#91899e] transition-colors hover:border-violet-300 focus:border-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-700/20";
 
 function Arrow({ children = "↗" }) {
   return <span aria-hidden="true">{children}</span>;
@@ -185,7 +185,7 @@ function ContactForm() {
 
   return (
     <form
-      className="flex min-w-0 flex-col gap-5 rounded-2xl bg-[#f8f6ff] p-5 text-[#2b2142] shadow-[0_24px_70px_rgba(17,17,17,0.12)] sm:gap-6 sm:p-8 lg:p-9"
+      className="flex min-w-0 flex-col gap-5 rounded-2xl border border-white/60 bg-[#f8f6ff] p-5 text-[#2b2142] shadow-[0_24px_70px_rgba(17,17,17,0.16)] sm:gap-6 sm:p-8 lg:p-9"
       onSubmit={handleSubmit}
     >
       <span className="text-[0.6rem] font-bold uppercase tracking-[0.2em] text-violet-700">
@@ -271,6 +271,33 @@ function ContactForm() {
 }
 
 function App() {
+  useEffect(() => {
+    const sections = document.querySelectorAll("[data-reveal]");
+    const motionPreference = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    if (motionPreference.matches || !("IntersectionObserver" in window)) {
+      sections.forEach((section) => section.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -32px 0px" }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <a
@@ -460,6 +487,7 @@ function App() {
 
         <section
           className="relative overflow-hidden bg-[#f8f6ff] px-5 py-20 sm:px-8 sm:py-24 lg:px-[8%] lg:py-[7.5rem]"
+          data-reveal
           id="desafio"
         >
           <div className="mx-auto max-w-[80rem]">
@@ -487,6 +515,7 @@ function App() {
 
         <section
           className="bg-[#f0ecf8] px-5 py-20 sm:px-8 sm:py-24 lg:px-[8%] lg:py-[7.5rem]"
+          data-reveal
           id="solucao"
         >
           <div className="mx-auto max-w-[80rem]">
@@ -531,6 +560,7 @@ function App() {
 
         <section
           className="grid gap-10 bg-[#211936] px-5 py-20 text-[#f8f6ff] sm:px-8 sm:py-24 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-[9%] lg:px-[8%] lg:py-[7.5rem]"
+          data-reveal
           id="experiencia"
         >
           <div>
@@ -555,7 +585,7 @@ function App() {
                 <span className="row-span-2 text-[0.65rem] text-violet-300 sm:row-span-1">
                   {recurso.numero}
                 </span>
-                <h3 className="text-sm font-semibold tracking-tight sm:text-base">
+                <h3 className="text-[0.95rem] font-semibold tracking-tight sm:text-base">
                   {recurso.titulo}
                 </h3>
                 <p className="col-start-2 text-xs leading-6 text-violet-100/70 sm:col-start-auto">
@@ -575,6 +605,7 @@ function App() {
 
         <section
           className="bg-[#f8f6ff] px-5 py-20 sm:px-8 sm:py-24 lg:px-[8%] lg:py-[7.5rem]"
+          data-reveal
           id="telas"
         >
           <div className="mx-auto max-w-[80rem]">
@@ -593,7 +624,7 @@ function App() {
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
               {telas.map((tela) => (
                 <figure
-                  className="overflow-hidden rounded-2xl border border-violet-100 bg-white"
+                  className="group overflow-hidden rounded-2xl border border-violet-100 bg-white transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-violet-200 hover:shadow-xl"
                   key={tela.imagem}
                 >
                   <div className="relative flex h-[18rem] items-center justify-center bg-[radial-gradient(ellipse_at_center,#e9e2f7,#ddd4f0)] p-5 sm:h-[22rem]">
@@ -602,7 +633,7 @@ function App() {
                     </span>
                     <img
                       alt={tela.alt}
-                      className="max-h-full max-w-full object-contain drop-shadow-xl"
+                      className="max-h-full max-w-full object-contain drop-shadow-xl transition-transform duration-300 group-hover:scale-[1.025]"
                       loading="lazy"
                       src={tela.imagem}
                     />
@@ -612,7 +643,7 @@ function App() {
                       <h3 className="text-sm font-semibold tracking-tight sm:text-base">
                         {tela.titulo}
                       </h3>
-                      <p className="mt-2 text-xs leading-5 text-slate-600">
+                      <p className="mt-2 text-sm leading-6 text-slate-600">
                         {tela.descricao}
                       </p>
                     </div>
@@ -626,7 +657,10 @@ function App() {
           </div>
         </section>
 
-        <section className="grid gap-10 bg-[#f0ecf8] px-5 py-20 sm:px-8 sm:py-24 md:grid-cols-2 md:items-center md:gap-12 lg:px-[8%] lg:py-[7.5rem]">
+        <section
+          className="grid gap-10 bg-[#f0ecf8] px-5 py-20 sm:px-8 sm:py-24 md:grid-cols-2 md:items-center md:gap-12 lg:px-[8%] lg:py-[7.5rem]"
+          data-reveal
+        >
           <div className="relative mx-auto grid h-[22rem] w-full max-w-sm place-items-center overflow-hidden rounded-t-[10rem] rounded-b-2xl bg-[#ddd4f0] sm:h-[27rem]">
             <img
               alt="Aparelho JOVI utilizado como referência para a proposta MOBIX"
@@ -672,6 +706,7 @@ function App() {
 
         <section
           className="grid gap-10 bg-[#211936] px-5 py-20 text-[#f8f6ff] sm:px-8 sm:py-24 lg:grid-cols-[0.8fr_1.2fr] lg:gap-[10%] lg:px-[8%] lg:py-[7.5rem]"
+          data-reveal
           id="equipe"
         >
           <div>
@@ -709,6 +744,7 @@ function App() {
 
         <section
           className="relative overflow-hidden bg-[#342653] px-5 py-20 text-[#f8f6ff] sm:px-8 sm:py-24 lg:px-[8%] lg:py-[7.5rem]"
+          data-reveal
           id="contato"
         >
           <div
@@ -727,6 +763,14 @@ function App() {
                   Quer conhecer melhor a proposta do FLOW? Envie uma mensagem
                   para a equipe MOBIX.
                 </p>
+                <a
+                  className="mt-5 inline-flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-semibold text-violet-100 transition-colors hover:text-white focus-visible:rounded-sm"
+                  href="mailto:mobix.fiap@gmail.com"
+                >
+                  <span className="text-violet-300">E-mail da equipe</span>
+                  <span aria-hidden="true">·</span>
+                  <span>mobix.fiap@gmail.com</span>
+                </a>
               </div>
               <ContactForm />
             </div>
