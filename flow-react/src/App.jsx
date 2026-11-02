@@ -23,11 +23,11 @@ const recursos = [
 ];
 
 const equipe = [
-  ["Beatriz Albuquerque", "RM572055"],
-  ["Nicole Couto", "RM569191"],
-  ["Robert Josino", "RM571622"],
-  ["Ryan Maick", "RM573051"],
-  ["Vitor Borin", "RM573194"],
+  ["Beatriz Albuquerque",],
+  ["Nicole Couto", ],
+  ["Robert Josino", ],
+  ["Ryan Maick", ],
+  ["Vitor Borin", ],
 ];
 
 function Arrow() {
@@ -131,7 +131,7 @@ function App() {
       <header className="site-header">
         <div className="header-inner">
           <a className="brand" href="#inicio" aria-label="MOBIX FLOW início">
-            <span className="brand-symbol">MB</span>
+            <span className="brand-symbol">M</span>
             <span className="brand-name">
               MOBIX<span className="brand-dot">.</span>
               <small>FLOW EXPERIENCE</small>
