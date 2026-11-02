@@ -1,122 +1,130 @@
+# MOBIX / FLOW
 
-# MOBIX, FLOW
+Landing page do FLOW, projeto acadêmico do grupo MOBIX para a atividade de Web
+Development da FIAP. Esta versão evolui para React a proposta e o conteúdo
+apresentados na Sprint 03, mantendo a identidade visual roxa, as imagens e as
+telas conceituais do projeto original.
 
-## Sobre o projeto
+## Sobre o FLOW
 
-O FLOW é uma solução desenvolvida pelo grupo MOBIX para facilitar o registro e a organização de conteúdos durante a rotina acadêmica.
+O FLOW é uma proposta para apoiar a organização dos estudos. A ideia parte do
+registro de lousas, livros, slides e anotações com a câmera JOVI e explora
+possibilidades como melhoria de imagem, reconhecimento de texto (OCR) e
+organização de conteúdos acadêmicos.
 
-A proposta utiliza a câmera JOVI como base para uma experiência de captura inteligente, com recursos de melhoria de imagem, reconhecimento de texto (OCR) e organização de materiais de estudo.
+O repositório contém a landing page e telas conceituais. **Não contém o
+aplicativo FLOW nem implementações funcionais de OCR, geração de resumos ou
+questões, armazenamento de materiais ou integração com a câmera JOVI.**
 
-Este projeto corresponde à evolução da Landing Page desenvolvida na Sprint 3, agora integrada ao React e estilizada com Tailwind CSS, conforme os requisitos da Sprint 4 da FIAP.
+## Tecnologias
 
-## Objetivo
-
-Facilitar a captura de conteúdos apresentados em aulas, como lousas, slides, livros e anotações, tornando esses registros mais organizados e acessíveis para os estudantes.
-
-## Tecnologias utilizadas
-
-- HTML5
-- CSS3
-- JavaScript
-- React
+- React e JSX
 - Vite
 - Tailwind CSS 4
-- Git e GitHub
-- Vercel
+- JavaScript
+- FormSubmit para encaminhar mensagens do formulário de contato
 
-## Estrutura do projeto
+## Pré-requisitos
 
-```text
-mobix-landing-page-challenge/
-├── MOBIX/
-│   ├── INTEGRANTES.TXT
-│   ├── index.html
-│   ├── style.css
-│   └── img/
-│
-├── flow-react/
-│   ├── public/
-│   ├── src/
-│   ├── index.html
-│   ├── package.json
-│   └── vite.config.js
-│
-├── INTEGRANTES.TXT
-└── README.md
-```
+- Node.js LTS (versão 22 ou superior recomendada)
+- npm
+- Git, para clonar o repositório
 
-## Como executar o projeto
+## Executar localmente
 
-### Pré-requisitos
-
-- Node.js instalado
-- npm instalado
-- Visual Studio Code (recomendado)
-
-### Instalação
-
-Entre na pasta do React:
+No terminal, a partir da raiz do repositório:
 
 ```bash
 cd flow-react
-```
-
-Instale as dependências:
-
-```bash
-npm install
-```
-
-### Executar localmente
-
-```bash
+npm ci
 npm run dev
 ```
 
-Acesse o endereço apresentado no terminal, normalmente:
+Abra o endereço local informado pelo Vite (por padrão,
+`http://localhost:5173/`).
 
-http://localhost:5173/
+## Validar e gerar a versão de produção
 
-### Gerar versão de produção
+Execute os comandos dentro de `flow-react/`:
 
 ```bash
+npm run lint
 npm run build
 ```
 
-Os arquivos finais serão gerados na pasta `dist`.
-
-### Visualizar a versão de produção
+O build gera os arquivos estáticos em `flow-react/dist/`. Para visualizar esse
+build localmente:
 
 ```bash
 npm run preview
 ```
 
-## Responsividade
+## Estrutura
 
-A interface utiliza classes responsivas do Tailwind CSS para adaptar a apresentação a diferentes tamanhos de tela:
+```text
+.
+├── INTEGRANTES.TXT             # Integrantes e RMs
+├── MOBIX/                      # Landing page original da Sprint 03
+│   ├── INTEGRANTES.TXT
+│   ├── index.html
+│   ├── style.css
+│   └── img/
+├── flow-react/                 # Evolução da landing page em React
+│   ├── public/
+│   │   └── img/                # Imagens e telas conceituais do FLOW
+│   ├── src/
+│   │   ├── App.jsx             # Seções, componentes e formulário
+│   │   ├── index.css           # Base global e efeitos específicos
+│   │   └── main.jsx            # Inicialização do React
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── vercel.json
+│   └── vite.config.js
+└── README.md
+```
 
-- Desktop
-- Tablet
-- Mobile
+## Contato e backend
 
-## Deploy
+O repositório não implementa um backend próprio, autenticação ou banco de dados.
+O formulário de contato envia as mensagens pelo serviço externo FormSubmit para
+`mobix.fiap@gmail.com`. No primeiro envio, o destinatário precisa confirmar a
+ativação no e-mail enviado pelo FormSubmit. O envio real depende dessa
+confirmação e da disponibilidade do serviço.
 
-Link do projeto publicado na Vercel:
+## Publicação na Vercel
 
-PREENCHER COM O LINK DA VERCEL
+Existe uma publicação do projeto em
+[https://mobix-landing-page-challenge.vercel.app/](https://mobix-landing-page-challenge.vercel.app/).
+O endereço abre a landing page, mas isso não confirma que a publicação tenha
+recebido as alterações locais desta entrega.
+
+Para publicar esta aplicação, configure o projeto na Vercel com:
+
+| Configuração | Valor |
+| --- | --- |
+| Root Directory | `flow-react` |
+| Install Command | `npm ci` |
+| Build Command | `npm run build` |
+| Output Directory | `dist` |
+
+O arquivo `flow-react/vercel.json` registra os comandos de instalação e build e
+a pasta de saída. O **Root Directory precisa ser definido nas configurações do
+projeto Vercel**; um arquivo dentro da pasta não substitui essa configuração.
+Nenhum novo deploy foi realizado como parte desta entrega.
 
 ## Repositório
 
-Link do GitHub:
+[github.com/beatrizaalbuquerque/mobix-landing-page-challenge](https://github.com/beatrizaalbuquerque/mobix-landing-page-challenge)
 
-https://github.com/beatrizaalbuquerque/mobix-landing-page-challenge
+## Entrega em ZIP
 
-## Integrantes
+O arquivo `INTEGRANTES.TXT` na raiz contém os cinco integrantes e seus RMs.
+Para preparar a entrega, inclua o código das pastas `MOBIX/` e `flow-react/`,
+este `README.md` e `INTEGRANTES.TXT`. Não inclua `node_modules/`, `dist/`,
+`.agents/`, `.git/` nem arquivos temporários. O arquivo compactado deve conter
+apenas uma cópia do README principal.
 
-Consulte o arquivo `INTEGRANTES.TXT` para visualizar os nomes completos e RMs dos integrantes.
+## Atividade
 
-## Instituição
-
-FIAP, Engenharia de Software
-
-Sprint 4 Front-end Design + Web Development
+FIAP · Engenharia de Software · Web Development
