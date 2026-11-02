@@ -1,16 +1,95 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# MOBIX | FLOW
 
-Currently, two official plugins are available:
+## Sobre o projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+O FLOW é uma solução desenvolvida pelo grupo MOBIX para auxiliar estudantes na captura e organização de conteúdos acadêmicos.
 
-## React Compiler
+A proposta utiliza a câmera JOVI como base para registrar conteúdos de aulas, como lousas, livros, slides e anotações, contando com recursos de melhoria de imagem, reconhecimento de texto (OCR) e organização dos materiais.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Este projeto representa a evolução da Landing Page desenvolvida na Sprint 3, agora integrada ao React e estilizada com Tailwind CSS.
 
-## Expanding the ESLint configuration
+## Objetivo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Facilitar o registro e a organização de materiais utilizados durante a rotina de estudos, tornando os conteúdos mais acessíveis para os estudantes.
+
+## Tecnologias utilizadas
+
+- HTML5
+- CSS3
+- JavaScript
+- React
+- Vite
+- Tailwind CSS
+- Git e GitHub
+- Vercel
+
+## Como executar o projeto
+
+### Pré-requisitos
+
+- Node.js
+- npm
+- Visual Studio Code (recomendado)
+
+### Instalação
+
+Acesse a pasta do projeto React:
+
+```bash
+cd flow-react
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+### Executar a aplicação
+
+```bash
+npm run dev
+```
+
+Acesse o endereço informado no terminal.
+
+### Gerar versão de produção
+
+```bash
+npm run build
+```
+
+### Visualizar versão de produção
+
+```bash
+npm run preview
+```
+
+## Responsividade
+
+A aplicação foi desenvolvida para se adaptar a diferentes dispositivos:
+
+- Desktop
+- Tablet
+- Mobile
+
+## Deploy
+
+Link da aplicação na Vercel:
+
+PREENCHER APÓS A PUBLICAÇÃO.
+
+## Repositório GitHub
+
+https://github.com/beatrizaalbuquerque/mobix-landing-page-challenge
+
+## Integrantes
+
+Os nomes completos e respectivos RMs estão disponíveis no arquivo INTEGRANTES.TXT.
+
+## Instituição
+
+FIAP, Engenharia de Software
+
+Sprint 4 Front-End Design + Web Development

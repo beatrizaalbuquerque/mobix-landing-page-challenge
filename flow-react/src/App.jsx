@@ -23,19 +23,19 @@ const funcionalidades = [
   {
     titulo: "Captura inteligente",
     descricao:
-      "Registre lousas, slides, livros e anotações em uma experiência feita para a rotina de estudos.",
+      "Utilize a câmera JOVI para registrar lousas, slides, livros e anotações durante as aulas, com uma experiência pensada para estudantes.",
     icon: "camera",
   },
   {
-    titulo: "Texto pronto para revisar",
+    titulo: "Melhoria de imagem e OCR",
     descricao:
-      "O OCR identifica o texto da imagem para facilitar a leitura, a busca e a revisão do conteúdo.",
+      "Recursos de ajuste de nitidez, iluminação e redução de reflexos ajudam a melhorar os registros. O OCR permite reconhecer textos presentes nas imagens.",
     icon: "text",
   },
   {
-    titulo: "Tudo no seu lugar",
+    titulo: "Organização dos estudos",
     descricao:
-      "Organize os registros por disciplina e mantenha seus materiais de estudo mais acessíveis.",
+      "Transforme os conteúdos capturados em materiais digitais organizados por disciplina, facilitando o acesso e a revisão.",
     icon: "folder",
   },
 ];
@@ -465,7 +465,19 @@ function App() {
         <section className="bg-[#f6f2ff] px-5 py-20 sm:px-8 sm:py-28 lg:px-10" id="equipe">
           <div className="mx-auto grid min-w-0 grid-cols-1 max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-20">
             <div className="min-w-0">
-              <p className="eyebrow">Projeto acadêmico FIAP</p>
+              <p className="eyebrow">Projeto acadêmico FIAP • Grupo MOBIX</p>
+
+                  <h2 className="section-title mt-5">
+  Tecnologia com foco em quem aprende.
+                </h2>
+
+                <p className="mt-5 text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+                  O Flow é a solução desenvolvida pelo grupo MOBIX para transformar
+                  a câmera JOVI em uma ferramenta de apoio à rotina acadêmica.
+                  A proposta reúne recursos de captura inteligente, melhoria de
+                  imagem, reconhecimento de texto e organização dos materiais
+                  utilizados durante os estudos.
+                </p>
               <h2 className="section-title mt-5">
                 Tecnologia com foco em quem aprende.
               </h2>
@@ -520,7 +532,7 @@ function App() {
 
         <section className="bg-[#120d20] px-5 py-20 text-center text-white sm:px-8 sm:py-24 lg:px-10">
           <div className="mx-auto max-w-3xl">
-            <p className="eyebrow text-violet-300">Flow — da foto ao futuro</p>
+            <p className="eyebrow text-violet-300">Flow, da foto ao futuro</p>
             <h2 className="mt-5 text-balance text-4xl font-semibold tracking-[-0.05em] sm:text-5xl lg:text-6xl">
               Suas ideias merecem acompanhar você.
             </h2>
