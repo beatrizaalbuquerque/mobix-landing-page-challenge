@@ -1,4 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+const CONTACT_ENDPOINT = "https://formsubmit.co/ajax/mobix.fiap@gmail.com";
 
 const etapas = [
   { numero: "01", titulo: "Capture", descricao: "Registre lousas, slides, livros e anotações durante a aula.", icon: "◉" },
@@ -33,6 +35,12 @@ function Arrow() {
 }
 
 function App() {
+  const [contactStatus, setContactStatus] = useState({
+    type: "idle",
+    message: "",
+  });
+  const [isSending, setIsSending] = useState(false);
+
   useEffect(() => {
     const items = document.querySelectorAll("[data-reveal]");
 
@@ -57,6 +65,62 @@ function App() {
 
     return () => observer.disconnect();
   }, []);
+
+  async function handleContactSubmit(event) {
+    event.preventDefault();
+
+    if (isSending) {
+      return;
+    }
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
+    payload._subject = "Novo contato pelo site MOBIX / FLOW";
+
+    setIsSending(true);
+    setContactStatus({
+      type: "loading",
+      message: "Enviando sua mensagem…",
+    });
+
+    try {
+      const response = await fetch(CONTACT_ENDPOINT, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      const result = await response.json();
+      const submissionSucceeded =
+        result.success === true || result.success === "true";
+
+      if (!response.ok || !submissionSucceeded) {
+        throw new Error(
+          result.message || "O serviço não conseguiu enviar sua mensagem."
+        );
+      }
+
+      form.reset();
+      setContactStatus({
+        type: "success",
+        message:
+          "Mensagem enviada! A equipe MOBIX receberá seu contato em breve.",
+      });
+    } catch (error) {
+      setContactStatus({
+        type: "error",
+        message:
+          error instanceof Error
+            ? `${error.message} Tente novamente ou envie um e-mail para mobix.fiap@gmail.com.`
+            : "Não foi possível enviar sua mensagem. Tente novamente ou envie um e-mail para mobix.fiap@gmail.com.",
+      });
+    } finally {
+      setIsSending(false);
+    }
+  }
 
   return (
     <>
@@ -433,23 +497,84 @@ function App() {
               </p>
             </div>
 
-            <div className="contact-card" data-reveal>
+            <form
+              className="contact-card contact-form"
+              data-reveal
+              onSubmit={handleContactSubmit}
+            >
               <span className="contact-card-label">MOBIX / FLOW</span>
 
-              <strong>
-                Uma solução pensada
-                <br />
-                para quem aprende.
-              </strong>
+              <strong>Conte para a gente como podemos ajudar.</strong>
 
-              <a href="#inicio" className="button button-light">
-                Voltar ao início <Arrow />
-              </a>
+              <label className="contact-field">
+                <span>Seu nome</span>
+                <input
+                  autoComplete="name"
+                  maxLength="100"
+                  name="name"
+                  placeholder="Como podemos chamar você?"
+                  required
+                />
+              </label>
+
+              <label className="contact-field">
+                <span>Seu e-mail</span>
+                <input
+                  autoComplete="email"
+                  maxLength="254"
+                  name="email"
+                  placeholder="voce@exemplo.com"
+                  required
+                  type="email"
+                />
+              </label>
+
+              <label className="contact-field">
+                <span>Mensagem</span>
+                <textarea
+                  maxLength="3000"
+                  name="message"
+                  placeholder="Escreva sua mensagem..."
+                  required
+                  rows="4"
+                />
+              </label>
+
+              <div className="contact-honeypot" aria-hidden="true">
+                <label>
+                  Não preencha este campo
+                  <input
+                    autoComplete="off"
+                    name="_honey"
+                    tabIndex="-1"
+                    type="text"
+                  />
+                </label>
+              </div>
+
+              <button
+                className="button button-light contact-submit"
+                disabled={isSending}
+                type="submit"
+              >
+                {isSending ? "Enviando…" : "Enviar mensagem"}
+                {!isSending && <Arrow />}
+              </button>
+
+              <p
+                aria-live="polite"
+                className={`contact-status contact-status-${contactStatus.type}`}
+                role={contactStatus.type === "error" ? "alert" : "status"}
+              >
+                {contactStatus.message}
+              </p>
 
               <span className="contact-card-foot">
-                FIAP · ENGENHARIA DE SOFTWARE
+                Seus dados serão encaminhados pelo FormSubmit para a equipe
+                MOBIX. No primeiro envio, a equipe deve confirmar a ativação
+                pelo e-mail recebido.
               </span>
-            </div>
+            </form>
           </div>
         </section>
       </main>

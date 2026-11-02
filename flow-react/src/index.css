@@ -898,8 +898,8 @@ a {
 .contact-grid {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr .65fr;
-  gap: 12%;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+  gap: clamp(28px, 8%, 100px);
   align-items: center;
   margin-top: 45px;
 }
@@ -942,6 +942,110 @@ a {
   font-size: 7px;
   letter-spacing: .15em;
   color: #8a8c80;
+}
+
+.contact-form {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  gap: 18px;
+}
+
+.contact-form .contact-card-label {
+  margin-bottom: -8px;
+}
+
+.contact-form > strong {
+  font-size: 24px;
+}
+
+.contact-field {
+  display: grid;
+  width: 100%;
+  gap: 8px;
+  color: #2B2142;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.contact-field input,
+.contact-field textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #D9D0EB;
+  border-radius: 10px;
+  background: #fff;
+  padding: 13px 14px;
+  color: #211936;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 450;
+  line-height: 1.5;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.contact-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+  color: #91899e;
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  border-color: #7C3AED;
+  outline: none;
+  box-shadow: 0 0 0 3px #7C3AED20;
+}
+
+.contact-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-submit {
+  width: 100%;
+  min-height: 48px;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.contact-submit:disabled {
+  cursor: wait;
+  opacity: .7;
+}
+
+.contact-status {
+  width: 100%;
+  margin: -8px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.contact-status-success {
+  color: #17643b;
+}
+
+.contact-status-loading {
+  color: #625377;
+}
+
+.contact-status-error {
+  color: #a52828;
+}
+
+.contact-form .contact-card-foot {
+  max-width: 44ch;
+  font-size: 9px;
+  letter-spacing: .02em;
+  line-height: 1.6;
 }
 
 .site-footer {
@@ -1037,6 +1141,7 @@ a {
   .team-section {
     gap: 6%;
   }
+
 }
 
 @media (max-width: 700px) {
