@@ -78,6 +78,8 @@ A aplicação foi desenvolvida para se adaptar a diferentes dispositivos:
 
 Link da aplicação na Vercel:
 
+mobix-landing-page-challenge.vercel.app
+
 PREENCHER APÓS A PUBLICAÇÃO.
 
 ## Repositório GitHub
