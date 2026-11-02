@@ -80,8 +80,6 @@ Link da aplicação na Vercel:
 
 mobix-landing-page-challenge.vercel.app
 
-PREENCHER APÓS A PUBLICAÇÃO.
-
 ## Repositório GitHub
 
 https://github.com/beatrizaalbuquerque/mobix-landing-page-challenge
